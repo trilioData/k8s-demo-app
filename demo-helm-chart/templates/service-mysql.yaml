@@ -1,0 +1,14 @@
+## Service for mysql app
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-demo-app-mysql
+  labels:
+    app: k8s-demo-app
+    tier: mysql
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: k8s-demo-app
+    tier: mysql

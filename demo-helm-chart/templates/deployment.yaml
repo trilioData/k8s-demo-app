@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo-app-frontend
+  labels:
+    app: k8s-demo-app
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-demo-app
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: k8s-demo-app
+        tier: frontend
+    spec:
+      containers:
+      - name: demoapp-frontend
+        image: docker.io/trilio/k8s-demo-app:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
